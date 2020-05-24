@@ -23,7 +23,7 @@
 
 </head>
 <body style="min-height:1000px;">
-  <div class="container">
+   <div class="container">
 
     <div class="card  my-5 py-4 text-center" style=" border:0px; margin-top:150px!important; position: relative;">
       <div class="card-body">
@@ -36,13 +36,13 @@
         <div class="card h-100" style="border:0px;">
           <div >
           <h3>Basic:</h3>
-              <select id="selectbox" onchange="alert('olaa');">
+              <select id="selectbox">
                   <option data-separator="true" value="##">Select Option</option>
-                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="pt_1">Option 1</option>
-                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="en_2">Option 2 </option>
-                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="es_3" disabled>Option 3 (Disabled)</option>
-                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="ch_4">Option 4</option>
-                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="5">Option 5</option>
+                  <option value="pt_1" selected>Option 1</option>
+                  <option value="en_2" >Option 2 </option>
+                  <option value="es_3" disabled>Option 3 (Disabled)</option>
+                  <option value="ch_4">Option 4</option>
+                  <option value="5">Option 5</option>
               </select>
           </div>
         </div>
@@ -50,14 +50,14 @@
       <div class="col-md-4 mb-5" style="border:0px;">
         <div class="card h-100" style="border:0px;">
           <div >
-          <h3>Basic:</h3>
+          <h3>Searchbox:</h3>
               <select id="selectbox2">
-                  <option data-separator="true" value="##">Select Option</option>
-                  <option value="pt_1">Option 1</option>
-                  <option value="en_2" selected>Option 2 </option>
-                  <option value="es_3" disabled>Option 3 (Disabled)</option>
-                  <option value="ch_4">Option 4</option>
-                  <option value="5">Option 5</option>
+                  <option value="##" data-separator="true" selected>Select Option</option>
+                  <option value="pt_1">Cristiano Ronaldo</option>
+                  <option value="en_2" >Lionel Messi </option>
+                  <option value="es_3" disabled>Neymar Jr. (Disabled)</option>
+                  <option value="ch_4">Ronaldinho</option>
+                  <option value="5">Luis Figo</option>
               </select>
           </div>
         </div>
@@ -65,223 +65,98 @@
       <div class="col-md-4 mb-5" style="border:0px;">
         <div class="card h-100" style="border:0px;">
           <div >
-          <h3>Basic:</h3>
-              <select id="selectbox3">
-                  <option data-separator="true" value="##">Select Option</option>
-                  <option value="pt_1">Option 1</option>
-                  <option value="en_2">Option 2 </option>
-                  <option value="es_3" disabled>Option 3 (Disabled)</option>
-                  <option value="ch_4">Option 4</option>
-                  <option value="5">Option 5</option>
+          <h3>Multiple:</h3>
+              <select id="selectbox6" multiple="">
+                  <option value="##" data-separator="true">Select Option</option>
+                  <option data-icon="fa fa-align-justify" value="pt_1">Item 1</option>
+                  <option data-icon="fa fa-address-book" value="en_2" >Item 2 </option>
+                  <option data-icon="fa fa-hashtag" value="es_3" disabled>Item 3 (Disabled)</option>
+                  <option data-icon="fa fa-beer" value="ch_4">Item 4</option>
+                  <option data-icon="fa fa-air-freshener" value="5">Item 5</option>
               </select>
           </div>
         </div>
       </div>
+    </div>
 
-
+    <div class="row">
+      <div class="col-md-4 mb-5" style="border:0px;">
+        <div class="card h-100" style="border:0px;">
+          <div >
+          <h3>Images:</h3>
+              <select id="selectbox3">
+                  <option value="##" data-separator="true" selected>Select Option</option>
+                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="pt_1">Cristiano Ronaldo</option>
+                  <option data-img="https://img.icons8.com/color/2x/argentina.png" value="en_2" >Lionel Messi </option>
+                  <option data-img="https://img.icons8.com/color/2x/brazil.png" value="es_3" disabled>Neymar Jr. (Disabled)</option>
+                  <option data-img="https://img.icons8.com/color/2x/brazil.png" value="ch_4">Ronaldinho</option>
+                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="5">Luis Figo</option>
+              </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5" style="border:0px;">
+        <div class="card h-100" style="border:0px;">
+          <div >
+          <h3>Icons:</h3>
+              <select id="selectbox4">
+                  <option value="##" data-separator="true" selected>Select Option</option>
+                  <option data-icon="fa fa-arrow-right" value="pt_1">Cristiano Ronaldo</option>
+                  <option data-icon="fa fa-tshirt" value="en_2" >Lionel Messi </option>
+                  <option data-icon="fa fa-futbol" value="es_3" disabled>Neymar Jr. (Disabled)</option>
+                  <option data-icon="fa fa-chevron-circle-right" value="ch_4">Ronaldinho</option>
+                  <option data-icon="fa fa-hashtag" value="5">Luis Figo</option>
+              </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5" style="border:0px;">
+        <div class="card h-100" style="border:0px;">
+          <div >
+          <h3>Mixed:</h3>
+              <select id="selectbox5">
+                  <option value="##" data-separator="true">Select Option</option>
+                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="pt_1">Cristiano Ronaldo</option>
+                  <option data-icon="fa fa-address-book" data-img="https://img.icons8.com/color/2x/argentina.png" value="en_2" >Lionel Messi </option>
+                  <option data-icon="fa fa-hashtag" value="es_3" disabled>Neymar Jr. (Disabled)</option>
+                  <option data-img="https://img.icons8.com/color/2x/brazil.png" value="ch_4">Ronaldinho</option>
+                  <option data-icon="fa fa-futbol" value="5">Luis Figo</option>
+              </select>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  </div>
 
+  <script src="js/bvselect.js"></script>
   <script >
-
-      // BEGIN BVSELECT CLASS
-      class BVSelect{
-
-          constructor({selector = 'defaultId', width = "100%", searchbox = false}){
-
-            // Define Variables
-            this.selector = selector.substring(1);
-            this.searchbox = searchbox;
-            this.width = width;
-
-            // Random Number generated
-            var randomID =  Math.floor(Math.random() * (9999 - 0 + 1)) + 0;
-
-            // Hides native selector
-            document.getElementById(this.selector).style.display = "none";
-
-            // ** ADD OPTIONS TO LIST **
-            this.SetupListOptions = function ()
-            {
-                // Get All options inside Selectbox
-                var x = document.getElementById(this.selector);
-                for (var i = 0; i < x.length; i++) {
-
-                     var optionText = x[i].text;
-                     var optionValue = x[i].value;
-                     var optionDisabled = x[i].disabled;
-                     var optionSeparator = x[i].getAttribute("data-separator");
-                     var optionImg = x[i].getAttribute("data-img");
-                     var optionIcon = x[i].getAttribute("data-icon");
-
-                    // Option Disabled
-                    if(optionDisabled == true) { var is_disabled = "bv_disabled"; } else { var is_disabled = ""; }
-                    // Separator
-                    if(optionSeparator) { var is_separator = "bv_separator"; } else { var is_separator = ""; }
-                    // Check for Attachment  
-                    if (optionImg) { var has_attachment = "<img src=" + optionImg + ">"; } else { if (optionIcon) { var has_attachment = "<i class='" + optionIcon + "' aria-hidden='true'></i>"; } else { var has_attachment = ""; }}
-
-                    // Append
-                    document.getElementById("ul_"+randomID).insertAdjacentHTML('beforeend', "<li class='" + is_disabled + " " + is_separator + "'  > " + has_attachment + " " + optionText + "</li>");
-                  }
-
-
-
-                  document.querySelectorAll('#ul_'+randomID+' li').forEach((item) => {
-                      item.addEventListener('click', (e) => {
-                          const index = Array.from(item.parentNode.children).indexOf((item))
-
-        
-                          document.getElementById(this.selector).getElementsByTagName('option')[index-1].selected = 'selected';
-                                 document.getElementById(this.selector).onchange();
-                           
-                      })
-                  })
-
-
-            }
-
-            // ** CREATE MAIN **
-            this.CriarDivBase = function () {
-
-                document.getElementById(this.selector).insertAdjacentHTML('afterend', '<div id="bv_' + randomID + '" data-search="' + this.searchbox + '" class="bv_mainselect"></div>');
-                document.getElementById("bv_"+randomID).insertAdjacentHTML('afterbegin', '<div id="main_' + randomID + '" style="width:' + this.width + ';" class="bv_atual bv_background"></div><ul id="ul_' + randomID + '" class="bv_ul_inner bv_background"></ul>');
-                  
-                var element_ul = document.getElementById('ul_'+randomID);
-                var element_bv = document.getElementById('bv_'+randomID);
-
-                // Set Width of UL
-                var select_width = document.getElementById("main_"+randomID).offsetWidth;
-                console.log(select_width);
-                element_ul.style.width = select_width+ "px";
-
-                if (this.searchbox == true) 
-                {
-                    document.querySelector("#ul_" + randomID).insertAdjacentHTML('afterbegin', '<li class="nofocus"><div class="innerinput"><input placeholder="Search..." class="bv_input" id="input_' + randomID + '" type="text"></div</li>');
-                }
-
-                // Get Selected Option
-                var selected_option = document.getElementById(this.selector);
-                var selected_option_text = selected_option.options[selected_option.selectedIndex].text;
-
-                // Check if there is a selected option, if not, gets the first
-                if(selected_option_text == "")
-                {
-                  first_option = document.getElementById(this.selector).selected_option = "0";
-                  first_option_text = selected_option.options[selected_option.selectedIndex].text;
-                  document.getElementById("main_"+randomID).innerHTML = first_option_text + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
-                } else {
-                  document.getElementById("main_"+randomID).innerHTML = selected_option_text + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
-                }
-
-                // Add event Listener on click main div
-                document.getElementById("main_"+randomID).addEventListener("click", function(){
-
-                   if(document.getElementById('ul_'+randomID).style.display == 'block') {
-
-                        document.getElementById('ul_'+randomID).style.display = 'none';
-                        Array.from(document.querySelectorAll(".arrows_bv"))
-                            .forEach(function(val) {
-                                val.classList.remove("up");
-                                val.classList.add("down");
-                        });
-
-                    } else {
-
-                        Array.from(document.querySelectorAll(".bv_ul_inner"))
-                            .forEach(function(val) {
-                                val.style.display = 'none';
-                        });
-                        document.getElementById('ul_'+randomID).style.display = 'block';
-                        Array.from(document.querySelectorAll(".arrows_bv"))
-                            .forEach(function(val) {
-                                val.classList.remove("up");
-                                val.classList.add("down");
-                        });
-                        document.querySelector("#arrow_" + randomID).classList.remove("down");
-                        document.querySelector("#arrow_" + randomID).classList.add("up");            
-                    }
-
-                }, false); 
-
-                // Criar Lista
-                this.SetupListOptions();
-
-            }
-
-            // Crates the Main Div
-            this.CriarDivBase();
-
-
-            // ** SEARCH BAR **
-            document.getElementById("input_"+randomID).addEventListener("keyup", function(){
-                  var input, filter, ul, li, i, txtValue;
-                  input = document.getElementById("input_"+randomID);
-                  filter = input.value.toUpperCase();
-                  ul = document.getElementById("ul_"+randomID);
-                  li = ul.getElementsByTagName("li");
-            
-                  for (i = 0; i < li.length; i++) {
-                      
-                      txtValue = li[i].innerText || li[i].textContent;
-                      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                          li[i].style.display = "";
-                      } else {
-                        if(!li[i].classList.contains("nofocus")) { li[i].style.display = "none"; } 
-                      }
-                  }
-              }, false); 
-
-              // ** CLICK OUTSIDE **
-              document.addEventListener("click", function(e){
-                if(!e.target.closest(".bv_mainselect") || !e.target.closest(".bv_atual") || !e.target.closest(".bv_ul_inner"))
-                {
-                  if(!event.target.classList.contains('bv_input'))
-                  {
-                      Array.from(document.querySelectorAll(".bv_ul_inner"))
-                          .forEach(function(val) {
-                              val.style.display = 'none';
-                      });
-                      Array.from(document.querySelectorAll(".arrows_bv"))
-                          .forEach(function(val) {
-                              val.classList.remove("up");
-                              val.classList.add("down");
-                      });
-                  }
-                }
-              }, true);
-          }
-
-        // ** METHODS ** 
-
-         Update(){
-
-            
-         }
-
-      }
-
-      document.addEventListener("DOMContentLoaded", function() {
-
-            var test = new BVSelect({
-              selector: "#selectbox",
-              searchbox: true
-            });
-
-            var test2 = new BVSelect({
-              selector: "#selectbox2",
-              searchbox: true
-            });
-
-            var test3 = new BVSelect({
-              selector: "#selectbox3",
-              searchbox: true
-            });
-
-       //   test.Update();
-      });
-
-
+  document.addEventListener("DOMContentLoaded", function() {
+        var Demo1 = new BVSelect({
+          selector: "#selectbox",
+          searchbox: true
+        });
+        var Demo2 = new BVSelect({
+          selector: "#selectbox2",
+          searchbox: true
+        });
+        var Demo3 = new BVSelect({
+          selector: "#selectbox3",
+          searchbox: true
+        });
+        var Demo4 = new BVSelect({
+          selector: "#selectbox4",
+          searchbox: true
+        });
+        var Demo5 = new BVSelect({
+          selector: "#selectbox5",
+          searchbox: true
+        });     
+        var Demo6 = new BVSelect({
+          selector: "#selectbox6",
+          searchbox: true
+        });  
+  });
   </script>
 </body>
 

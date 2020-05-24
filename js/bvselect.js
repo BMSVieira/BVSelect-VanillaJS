@@ -1,245 +1,234 @@
-(function($) {
-    $.fn.BVSelect = function(parameters) {
+ // BEGIN BVSELECT CLASS
+      class BVSelect{
 
-        // VARIABLES
-        var selectorID = $(this).attr("id"); // Selector ID
-        var select = $(this); // Native Selector Object
-        var randomID = Math.floor(Math.random() * (9999 - 0 + 1)) + 0; // Random ID Generated
-        var selectedIDFocus = 0; // Save wich dropdown is currently open
-        var selectedMultiple = []; //
+          constructor({selector = 'defaultId', width = "100%", searchbox = false}){
 
-        // SETUP LIST
-        function SetListBV(options) {
-            options.find("option").each(function(index, element) {
-                // Separator Element
-                if (element.disabled == true) {
-                    var is_disabled = "bv_disabled"
-                } else {
-                    is_disabled = ""
-                }
-                // Disabled Element   
-                if ($(this).data('separator') == true) {
-                    var is_separator = "bv_separator"
-                } else {
-                    is_separator = ""
-                }
-                // Check for Attachment  
-                if ($(this).data("img")) {
-                    var has_attachment = "<img src=" + $(this).data('img') + ">";
-                } else {
-                    if ($(this).data("icon")) {
-                        var has_attachment = "<i class='" + $(this).data('icon') + "' aria-hidden='true'></i>";
-                    } else {
-                        var has_attachment = "";
-                    }
-                }
-                // Apend li to ul
-                $("#ul_" + randomID).append("<li class='" + is_disabled + " " + is_separator + "'  > " + has_attachment + " " + $(this).text() + "</li>");
-            });
+            // Define Variables
+            this.selector = selector.substring(1);
+            this.searchbox = searchbox;
+            this.width = width;
 
-            // ** SELECT OPTION  **
-            $("#ul_" + randomID).children().click(function(event) {
-                if ($(this).hasClass("nofocus") || $(this).hasClass("bv_disabled")) {} else // if this li is searchbox
-                {
-                    var index = $(this).index(); // Index of list
-                    if ($("#ul_" + randomID + " li").hasClass("nofocus")) {
-                        index = index - 1;
-                    } // Fix for lists with extra Li (Searchbar)
-                    var SelectedNames = "";
+            var selectedIDFocus = 0; // Save wich dropdown is currently open
+            var selectedMultiple = []; 
 
-                    // Checks if user is holding any below keys
-                    if (select.is("[multiple]")) // Check if native select has multiple attribute
-                    {
-                            event.preventDefault();
-                            $("#" + selectorID).removeAttr("selected"); // Removes all selections
-                            if (selectedMultiple.indexOf(index) > -1) {
-                                $('#' + selectorID + " option:eq(" + index + ")").removeAttr("selected");
-                                var index_test = selectedMultiple.indexOf(index);
-                                selectedMultiple.splice(index_test, 1);
-                            } else {
-                                selectedMultiple.push(index);
-                            } // Adds to array 
+            // Random Number generated
+            var randomID =  Math.floor(Math.random() * (9999 - 0 + 1)) + 0;
 
-                            // Check if array is empty, if it is, gets the first option
-                            if (selectedMultiple.length == 0) {
-                                SelectedNames = options.find("option:eq(0)").text();
-                            } else {
+            // Hides native selector
+            document.getElementById(this.selector).style.display = "none";
 
-                                for (var i = 0; i < selectedMultiple.length; i++) {
-                                    var indexValFromArray = selectedMultiple[i];
-                                    $('#' + selectorID + " option:eq(" + indexValFromArray + ")").prop('selected', true);
-                                    if ($('#' + selectorID + " option:eq(" + indexValFromArray + ")").text() != "undefined") // Removes the first selection
-                                    {
-                                        SelectedNames = SelectedNames + ", " + $('#' + selectorID + " option:eq(" + indexValFromArray + ")").text();
-                                    }
-                                }
-                                SelectedNames = SelectedNames.substring(2);
+            // ** ADD OPTIONS TO LIST **
+            this.SetupListOptions = function ()
+            {
+                // Get All options inside Selectbox
+                var x = document.getElementById(this.selector);
+                for (var i = 0; i < x.length; i++) {
+
+                     var optionText = x[i].text;
+                     var optionValue = x[i].value;
+                     var optionDisabled = x[i].disabled;
+                     var optionSeparator = x[i].getAttribute("data-separator");
+                     var optionImg = x[i].getAttribute("data-img");
+                     var optionIcon = x[i].getAttribute("data-icon");
+
+                    // Option Disabled
+                    if(optionDisabled == true) { var is_disabled = "bv_disabled"; } else { var is_disabled = ""; }
+                    // Separator
+                    if(optionSeparator) { var is_separator = "bv_separator"; } else { var is_separator = ""; }
+                    // Check for Attachment  
+                    if (optionImg) { var has_attachment = "<img src=" + optionImg + ">"; } else { if (optionIcon) { var has_attachment = "<i class='" + optionIcon + "' aria-hidden='true'></i>"; } else { var has_attachment = ""; }}
+
+                    // Append
+                    document.getElementById("ul_"+randomID).insertAdjacentHTML('beforeend', "<li class='" + is_disabled + " " + is_separator + "'  > " + has_attachment + " " + optionText + "</li>");
+                  }
+
+                  document.querySelectorAll('#ul_'+randomID+' li').forEach((item) => {
+                      item.addEventListener('click', (e) => {
+                          const index = Array.from(item.parentNode.children).indexOf((item))
+
+                           // TODO: Verificar se é DISABLED
+
+                            if(item.classList.contains("bv_disabled") || item.classList.contains("nofocus") ) { } else {
+                              // Get Index of option
+                              document.getElementById(this.selector).getElementsByTagName('option')[index-1].selected = 'selected';
+                              // Trigger onchange function
+                              if(x.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
+                              // Updates main div
+                              document.getElementById("main_"+randomID).innerHTML = item.textContent + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
+                              document.getElementById("ul_"+randomID).style.display = "none";
                             }
-                            // Adds the texto o the main DIV
-                            $("#main_" + randomID).html(SelectedNames + " <i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>");
-                        
-                    } else {
-                        if ($(this).hasClass("bv_disabled")) {} else {
-                            $("#main_" + randomID).html($(this).text() + " <i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>");
-                            $("#" + selectorID).removeAttr("selected"); // Removes all selected options in case of used multiple before
-                            selectedMultiple = []; // Empty array of Multiple Selected
-                            $("#" + selectorID).prop("selectedIndex", index).trigger("change");
-                            $("#ul_" + randomID).slideUp("fast");
-                            $("#input_" + randomID).val("").keyup();
-                            selectedIDFocus = 0;
-                        }
-                    }
-                }
-            });
-
-            // ** SEARCHBAR  **
-            $("#input_" + randomID).on("keyup", function() {
-                var value = this.value.toLowerCase().trim();
-                $("#ul_" + randomID + " li").show().filter(function() {
-                    if ($(this).hasClass("nofocus") == false) {
-                        return $(this).text().toLowerCase().trim().indexOf(value) == -1;
-                    }
-                }).hide();
-            });
-
-            // ** HIDE WHEN CLICK OUTSIDE ** 
-            $(document).on('click.bv_mainselect', function(event) {
-                if ($(event.target).closest('.bv_mainselect').length === 0) {
-                    $("#ul_" + randomID).hide();
-                    $("#arrow_" + randomID).removeClass("up").addClass("down");
-                    $(".bv_input").val("").keyup();
-
-                    // Reset ViewPort Offset
-                    selectedIDFocus = 0;
-                    $(".bv_ul_inner").css("position", "absolute");
-                    $(".bv_ul_inner").css("bottom", "");
-                }
-            });
-        }
-
-        // ON SCROLL EVENT TO PREVENT OUT OF VIEWPORT
-        $(window).scroll(function() {
-            // If Dropdown in focus
-            if (selectedIDFocus != 0) {
-                var currentWindowViewOffSet = $(window).scrollTop() + $(window).height(); // Window Offset
-                var currentElementViewOffSet = $("#main_" + randomID).offset().top; // Main Element Offset
-                var MainDivOff = $("#ul_" + randomID).height(); // Height of the List
-                var DiffBetW = currentWindowViewOffSet - currentElementViewOffSet // Difference between Element and Window
-                // If Difference is greater than List's height
-                if (DiffBetW > MainDivOff) {
-                    FixVerticalViewPort();
-                }
-            }
-        });
-
-        // SETUP BASE DIV
-        function SetBaseBV(options, config) {
-            options.after($('<div id="bv_' + randomID + '" data-search="' + config.searchbox + '" style="width:' + config.width + ';"></div>').addClass('bv_mainselect ').addClass(options.attr('class') || '').addClass(options.attr('disabled') ? 'disabled' : '').attr('tabindex', options.attr('disabled') ? null : '0'));
-            $("#bv_" + randomID).append('<div id="main_' + randomID + '" class="bv_atual bv_background"></div><ul id="ul_' + randomID + '" class="bv_ul_inner bv_background"></ul>');
-
-            if (config.searchbox == true) {
-                $("#ul_" + randomID).prepend('<li class="nofocus"><div class="innerinput"><input placeholder="Search..." class="bv_input" id="input_' + randomID + '" type="text"></div</li>');
+                      })
+                  })
             }
 
-            var select_width = $("#main_" + randomID).width();
-            $("#ul_" + randomID).css("width", select_width + 24 + "px");
+            // ** CREATE MAIN **
+            this.CriarDivBase = function () {
 
-            var selected_option = options.find("option:selected").text();
-            if (selected_option == "") {
-                var selected_option = options.find("option:eq(0)").text();
-            }
-            $("#main_" + randomID).html(selected_option + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>");
+                document.getElementById(this.selector).insertAdjacentHTML('afterend', '<div id="bv_' + randomID + '" data-search="' + this.searchbox + '" class="bv_mainselect"></div>');
+                document.getElementById("bv_"+randomID).insertAdjacentHTML('afterbegin', '<div id="main_' + randomID + '" style="width:' + this.width + ';" class="bv_atual bv_background"></div><ul id="ul_' + randomID + '" class="bv_ul_inner bv_background"></ul>');
+                  
+                var element_ul = document.getElementById('ul_'+randomID);
+                var element_bv = document.getElementById('bv_'+randomID);
 
-            // ** MAIN DIV CLICK ** 
-            $("#main_" + randomID).click(function() {
+                // Set Width of UL
+                var select_width = document.getElementById("main_"+randomID).offsetWidth;
+                element_ul.style.width = select_width+ "px";
 
-                // Check if it is open, if yes, close it.
-                if ($("#ul_" + randomID).css('display') == 'block') {
-                    $(".bv_ul_inner").slideUp("fast");
-                    $(".arrows_bv").removeClass("up").addClass("down");
+                if (this.searchbox == true) 
+                {
+                    document.querySelector("#ul_" + randomID).insertAdjacentHTML('afterbegin', '<li class="nofocus"><div class="innerinput"><input placeholder="Search..." class="bv_input" id="input_' + randomID + '" type="text"></div</li>');
+                }
+
+                // Get Selected Option
+                var selected_option = document.getElementById(this.selector);
+                if(!selected_option.attributes.multiple)
+                {
+                  var selected_option_text = selected_option.options[selected_option.selectedIndex].text;
                 } else {
-                    $(".bv_ul_inner").hide();
-                    $("#ul_" + randomID).slideDown("fast");
-                    $(".arrows_bv").removeClass("up").addClass("down");
-                    $("#arrow_" + randomID).removeClass("down").addClass("up");
-
-                    if (parameters.offset == true) {
-                        FixVerticalViewPort();
-                    }
+                  var selected_option_text = selected_option[0].innerHTML;
                 }
-            });
-            // Append List
-            SetListBV(options);
-        }
 
-        // FIX VIEWPORT OFFSET
-        function FixVerticalViewPort() {
-            var currentWindowView = $(window).scrollTop() + $(window).height();
-            var currentElementView = $("#ul_" + randomID + " li:last-child").offset().top;
-            // +50 to fix outer border
-            if (Math.round(currentElementView + 50) > Math.round(currentWindowView)) {
-                selectedIDFocus = randomID;
-                $("#ul_" + randomID).css("position", "fixed");
-                $("#ul_" + randomID).css("bottom", "0px");
-            } else {
-                selectedIDFocus = 0;
-                $(".bv_ul_inner").css("position", "absolute");
-                $(".bv_ul_inner").css("bottom", "");
-            }
-        }
-        // ** ---------- METHODS ----------- **
-        if (typeof parameters == 'string') {
+                // Check if there is a selected option, if not, gets the first
+                if(selected_option_text == "")
+                {
+                  var first_option = document.getElementById(this.selector).selected_option = "0";
+                  first_option_text = selected_option.options[selected_option.selectedIndex].text;
+                  document.getElementById("main_"+randomID).innerHTML = first_option_text + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
+                } else {
+                  document.getElementById("main_"+randomID).innerHTML = selected_option_text + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
+                }
 
-            // ** DESTROY **
-            if (parameters == 'destroy') {
-                this.each(function() {
-                    var divselect = $(this).next('.bv_mainselect');
-                    if (divselect.length > 0) {
-                        divselect.remove();
-                        select.css('display', 'block');
+                // Add event Listener on click main div
+                document.getElementById("main_"+randomID).addEventListener("click", function(){
+
+                   if(document.getElementById('ul_'+randomID).style.display == 'block') {
+
+                        document.getElementById('ul_'+randomID).style.display = 'none';
+                        Array.from(document.querySelectorAll(".arrows_bv"))
+                            .forEach(function(val) {
+                                val.classList.remove("up");
+                                val.classList.add("down");
+                        });
+
+                    } else {
+
+                        Array.from(document.querySelectorAll(".bv_ul_inner"))
+                            .forEach(function(val) {
+                                val.style.display = 'none';
+                        });
+                        document.getElementById('ul_'+randomID).style.display = 'block';
+                        Array.from(document.querySelectorAll(".arrows_bv"))
+                            .forEach(function(val) {
+                                val.classList.remove("up");
+                                val.classList.add("down");
+                        });
+                        document.querySelector("#arrow_" + randomID).classList.remove("down");
+                        document.querySelector("#arrow_" + randomID).classList.add("up");    
                     }
-                });
+                    FixVerticalViewPort();
+                }, false); 
+
+                // Criar Lista
+                this.SetupListOptions();
             }
 
-            // ** UPDATE **  
-            if (parameters == 'update') {
-                this.each(function() {
-                    var current_id = $(this).next(".bv_mainselect").children().attr("id").match(/\d+/);
-                    randomID = current_id;
+            // Creates the Main Div
+            this.CriarDivBase();
 
-                    // Remove all lines without .nofocus class (search input)
-                    $("#ul_" + current_id + " li:not(.nofocus)").remove();
-                    $("#main_" + current_id + "").children().off();
+            // ON SCROLL EVENT TO PREVENT OUT OF VIEWPORT
+            document.addEventListener("scroll", function(){
+               if (selectedIDFocus != 0) {
+               
+                  var currentWindowViewOffSet = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+                  var container = document.getElementById("main_" + randomID);
+                  var lastchild = container.lastChild;
+                  var currentElementViewOffSet = lastchild.getBoundingClientRect().top;
+                
+                  var MainDivOff = document.getElementById("ul_" + randomID).clientHeight;
+                  var DiffBetW = currentWindowViewOffSet - currentElementViewOffSet // Difference between Element and Window
+                
+                  // If Difference is greater than List's height
+                  if (DiffBetW > MainDivOff) {
+                      FixVerticalViewPort();
+                  } 
+               }
+            }, false); 
 
-                    // Fetches fields and append to main div
-                    SetListBV(select);
-                });
-            }
+            function FixVerticalViewPort()
+            {
+                var currentWindowView = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+                var container = document.getElementById("ul_" + randomID);
+                var lastchild = container.lastChild;
+                var currentElementView = lastchild.getBoundingClientRect().top;
+ 
+                // +50 to fix outer border
+                if (Math.round(currentElementView + 50) > Math.round(currentWindowView)) {
 
-            // ** GET GENERATED ID **  
-            if (parameters == 'getid') {
-                this.each(function() {
-                    var current_id = $(this).next(".bv_mainselect").children().attr("id").match(/\d+/);
-                    randomID = current_id;
-                });
-                return randomID[0];
-            }
-        } else {
+                    selectedIDFocus = randomID;
+                    document.getElementById("ul_"+randomID).style.position = "fixed";
+                    document.getElementById("ul_"+randomID).style.bottom = "0px"; 
 
-            // Default Parameters
-            var defaults = {
-                width: "100%", // Width 100%
-                searchbox: false, // Searchbox not included
-                offset: true // Fixes Viewport Overflow
-            }
+                } else {
+
+                    selectedIDFocus = 0;
+                    document.getElementById("ul_"+randomID).style.position = "absolute";
+                    document.getElementById("ul_"+randomID).style.bottom = ""; 
+                } 
+
             
-            var parameters = $.extend({}, defaults, parameters);
-            // Hide Native Select
-            $(this).hide();
+            }
 
-            // Setup main div
-            SetBaseBV(select, parameters);
-            return this;
-        }
-    };
-}(jQuery));
+            // ** SEARCH BAR **
+            document.getElementById("input_"+randomID).addEventListener("keyup", function(){
+                  var input, filter, ul, li, i, txtValue;
+                  input = document.getElementById("input_"+randomID);
+                  filter = input.value.toUpperCase();
+                  ul = document.getElementById("ul_"+randomID);
+                  li = ul.getElementsByTagName("li");
+            
+                  for (i = 0; i < li.length; i++) {
+                      
+                      txtValue = li[i].innerText || li[i].textContent;
+                      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                          li[i].style.display = "";
+                      } else {
+                        if(!li[i].classList.contains("nofocus")) { li[i].style.display = "none"; } 
+                      }
+                  }
+              }, false); 
+
+              // ** CLICK OUTSIDE **
+              document.addEventListener("click", function(e){
+                if(!e.target.closest(".bv_mainselect") || !e.target.closest(".bv_atual") || !e.target.closest(".bv_ul_inner") || !event.target.classList.contains('bv_input'))
+                {
+                  if(!event.target.classList.contains('bv_input'))
+                  {
+
+                    if(event.target.nodeName != "LI")
+                    {
+                      Array.from(document.querySelectorAll(".bv_ul_inner"))
+                          .forEach(function(val) {
+                              val.style.display = 'none';
+                      });
+                      Array.from(document.querySelectorAll(".arrows_bv"))
+                          .forEach(function(val) {
+                              val.classList.remove("up");
+                              val.classList.add("down");
+                      });
+
+                      selectedIDFocus = 0;
+                      document.getElementById("ul_"+randomID).style.position = "absolute";
+                      document.getElementById("ul_"+randomID).style.bottom = ""; 
+                    }
+                  }
+                }
+              }, true);
+          }
+
+        // ** METHODS ** 
+
+         Update(){
+
+            
+         }
+      }
