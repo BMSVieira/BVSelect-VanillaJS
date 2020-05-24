@@ -1,0 +1,121 @@
+/* *****************************
+
+BVSelect Jquery Plugin Styles
+Developed by: Bruno Vieira
+
+**************************** */
+.bv_mainselect {
+	color: #fff;
+	padding: 7px 5px 7px 5px;
+	border-radius: 6px;
+	font-family: Arial;
+	font-size: 10pt
+}
+.bv_atual {
+	color: #535353;
+	font-size: 11pt;
+	padding: 10px;
+	border: 2px solid #e1e1e1;
+	border-radius: 6px;
+	cursor: pointer
+}
+.bv_disabled {
+	background-color: #e6e6e6!important;
+	cursor: default!important
+}
+.bv_separator {
+	font-weight: 700;
+	color: #282828!important
+}
+.bv_background {
+	background-color: #fff
+}
+.arrow {
+	border: solid grey;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+	float: right
+}
+.up {
+	transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
+	margin-top: 5px;
+	transition: all .2s ease
+}
+.down {
+	transition: all .2s ease;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	margin-top: 2px
+}
+.bv_ul_inner {
+	position: absolute;
+	margin-top: 10px;
+	padding: 0;
+	display: none;
+	border: 2px solid #e1e1e1;
+	border-radius: 8px;
+	display: none;
+	z-index: 1
+}
+.bv_ul_inner li {
+    cursor: pointer;
+    list-style: none;
+    color: #353535;
+    padding: 5px 0 5px 9px;
+    font-family: arial;
+    font-size: 10pt;
+	padding: 12px 28px 10px 10px;
+}
+
+.bv_ul_inner i {
+    color: #464646;
+    font-size: 17pt;
+    margin-right: 10px;
+    float: left;
+    margin-top: -1px;
+    margin-left: 3px;
+}
+
+.bv_ul_inner li img{
+	float: left;
+	margin-right: 11px;
+	position: relative;
+	bottom: 6px;
+	max-width: 30px; /* Change to fit your images */
+}
+
+.bv_ul_inner li input
+{
+	padding: 0px;
+	border: 0px;
+	    border-bottom-color: currentcolor;
+	    border-bottom-style: none;
+	    border-bottom-width: 0px;
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: 0px;
+	color: black;
+	height: 38px;
+	width: 100%;
+	background-color: transparent;
+	font-size: 10pt;
+	font-weight: bold;
+}
+.bv_ul_inner li:hover {
+	background-color: #eee
+}
+.nofocus
+{
+	background-color: rgba(255, 255, 255, 0.1) !important;
+	padding: 0px !important;
+	border-bottom: 2px solid #e1e1e1;
+}
+.innerinput
+{
+	padding: 0px 9px 0px 10px;
+}
+*:focus {
+    outline: none!important;
+}
