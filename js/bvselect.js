@@ -49,6 +49,12 @@ class BVSelect{
                           const index = Array.from(item.parentNode.children).indexOf((item))
                           var selected_option = document.getElementById(this.selector);
 
+                          if(this.searchbox == true)
+                          {
+                            var numberless = -1;
+                          } else {
+                            var numberless = "";
+                          }
 
                       if(item.classList.contains("bv_disabled") || item.classList.contains("nofocus") ) { } else {
                           if(selected_option.attributes.multiple)
@@ -59,7 +65,7 @@ class BVSelect{
                                     if (selectedMultiple.indexOf(index) > -1) {
                                         var index_test = selectedMultiple.indexOf(index);
                                         selectedMultiple.splice(index_test, 1);
-                                        document.getElementById(this.selector)[index-1].selected = false;
+                                        document.getElementById(this.selector)[index+numberless].selected = false;
                                     } else {
                                         selectedMultiple.push(index);
                                     } // Adds to array 
@@ -72,7 +78,7 @@ class BVSelect{
                                         for (var i = 0; i < selectedMultiple.length; i++) {
                                             
                                             var indexValFromArray = selectedMultiple[i];
-                                            document.getElementById(this.selector).getElementsByTagName('option')[indexValFromArray-1].selected = 'selected';
+                                            document.getElementById(this.selector).getElementsByTagName('option')[indexValFromArray+numberless].selected = 'selected';
                                             SelectedNames += ", " + selected_option[indexValFromArray-1].innerHTML;
                                             
                                         }
@@ -83,7 +89,7 @@ class BVSelect{
                             
                           } else {
                                     // Get Index of option
-                                    document.getElementById(this.selector).getElementsByTagName('option')[index-1].selected = 'selected';
+                                    document.getElementById(this.selector).getElementsByTagName('option')[index+numberless].selected = 'selected';
                                     // Trigger onchange function
                                     if(x.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
                                     // Updates main div
@@ -216,25 +222,27 @@ class BVSelect{
             } 
         }
 
-        // ** SEARCH BAR **
-        document.getElementById("input_"+randomID).addEventListener("keyup", function(){
-              var input, filter, ul, li, i, txtValue;
-              input = document.getElementById("input_"+randomID);
-              filter = input.value.toUpperCase();
-              ul = document.getElementById("ul_"+randomID);
-              li = ul.getElementsByTagName("li");
-        
-              for (i = 0; i < li.length; i++) {
-                  
-                  txtValue = li[i].innerText || li[i].textContent;
-                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                      li[i].style.display = "";
-                  } else {
-                    if(!li[i].classList.contains("nofocus")) { li[i].style.display = "none"; } 
-                  }
-              }
-          }, false); 
-
+          // ** SEARCH BAR **
+          if(this.searchbox == true)
+          {
+          document.getElementById("input_"+randomID).addEventListener("keyup", function(){
+                var input, filter, ul, li, i, txtValue;
+                input = document.getElementById("input_"+randomID);
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("ul_"+randomID);
+                li = ul.getElementsByTagName("li");
+          
+                for (i = 0; i < li.length; i++) {
+                    
+                    txtValue = li[i].innerText || li[i].textContent;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                      if(!li[i].classList.contains("nofocus")) { li[i].style.display = "none"; } 
+                    }
+                }
+            }, false); 
+          }
           // ** CLICK OUTSIDE **
           document.addEventListener("click", function(e){
             if(!e.target.closest(".bv_mainselect") || !e.target.closest(".bv_atual") || !e.target.closest(".bv_ul_inner") || !event.target.classList.contains('bv_input'))
