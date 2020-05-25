@@ -21,11 +21,13 @@ Developed by: Bruno Vieira
 }
 .bv_disabled {
 	background-color: #e6e6e6!important;
-	cursor: default!important
+	cursor: default!important;
 }
 .bv_separator {
 	font-weight: 700;
-	color: #282828!important
+	color: #282828!important;
+	cursor:default!important;
+	background-color:transparent!important;
 }
 .bv_background {
 	background-color: #fff

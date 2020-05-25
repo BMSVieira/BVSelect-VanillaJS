@@ -40,8 +40,7 @@
           <div >
           <h3>Basic:</h3>
               <select id="selectbox">
-                  <option data-separator="true" value="##">Select Option</option>
-                  <option value="pt_1" selected>Option 1</option>
+                  <option value="pt_1">Option 1</option>
                   <option value="en_2" >Option 2 </option>
                   <option value="es_3" disabled>Option 3 (Disabled)</option>
                   <option value="ch_4">Option 4</option>
@@ -55,9 +54,8 @@
           <div >
           <h3>Searchbox:</h3>
               <select id="selectbox2">
-                  <option value="##" data-separator="true" selected>Select Option</option>
                   <option value="pt_1">Cristiano Ronaldo</option>
-                  <option value="en_2" >Lionel Messi </option>
+                  <option value="en_2">Lionel Messi </option>
                   <option value="es_3" disabled>Neymar Jr. (Disabled)</option>
                   <option value="ch_4">Ronaldinho</option>
                   <option value="5">Luis Figo</option>
@@ -70,7 +68,6 @@
           <div >
           <h3>Multiple:</h3>
               <select id="selectbox6" multiple="">
-                  <option value="##" data-separator="true">Select Option</option>
                   <option data-icon="fa fa-align-justify" value="pt_1">Item 1</option>
                   <option data-icon="fa fa-address-book" value="en_2" >Item 2 </option>
                   <option data-icon="fa fa-hashtag" value="es_3" disabled>Item 3 (Disabled)</option>
@@ -88,12 +85,15 @@
           <div >
           <h3>Images:</h3>
               <select id="selectbox3">
-                  <option value="##" data-separator="true" selected>Select Option</option>
+                  <option value="##" data-separator="true">Portugal</option>
+                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="5">Luis Figo</option>
                   <option data-img="https://img.icons8.com/color/2x/portugal.png" value="pt_1">Cristiano Ronaldo</option>
+                  <option value="##" data-separator="true">Argentina</option>                  
                   <option data-img="https://img.icons8.com/color/2x/argentina.png" value="en_2" >Lionel Messi </option>
+                  <option value="##" data-separator="true">Brasil</option>
                   <option data-img="https://img.icons8.com/color/2x/brazil.png" value="es_3" disabled>Neymar Jr. (Disabled)</option>
                   <option data-img="https://img.icons8.com/color/2x/brazil.png" value="ch_4">Ronaldinho</option>
-                  <option data-img="https://img.icons8.com/color/2x/portugal.png" value="5">Luis Figo</option>
+
               </select>
           </div>
         </div>
@@ -103,7 +103,6 @@
           <div >
           <h3>Icons:</h3>
               <select id="selectbox4">
-                  <option value="##" data-separator="true" selected>Select Option</option>
                   <option data-icon="fa fa-arrow-right" value="pt_1">Cristiano Ronaldo</option>
                   <option data-icon="fa fa-tshirt" value="en_2" >Lionel Messi </option>
                   <option data-icon="fa fa-futbol" value="es_3" disabled>Neymar Jr. (Disabled)</option>
@@ -118,7 +117,6 @@
           <div >
           <h3>Mixed:</h3>
               <select id="selectbox5">
-                  <option value="##" data-separator="true">Select Option</option>
                   <option data-img="https://img.icons8.com/color/2x/portugal.png" value="pt_1">Cristiano Ronaldo</option>
                   <option data-icon="fa fa-address-book" data-img="https://img.icons8.com/color/2x/argentina.png" value="en_2" >Lionel Messi </option>
                   <option data-icon="fa fa-hashtag" value="es_3" disabled>Neymar Jr. (Disabled)</option>
@@ -143,7 +141,10 @@
         var demo2 = new BVSelect({
           selector: "#selectbox2",
           searchbox: true,
-          offset: true
+          offset: true,
+          width: "100%;",
+          placeholder: "Select Option",
+          search_placeholder: "Search..."
         });
         var demo3 = new BVSelect({
           selector: "#selectbox3",
@@ -163,7 +164,9 @@
         var demo6 = new BVSelect({
           selector: "#selectbox6",
           searchbox: true,
-          offset: true
+          offset: true,
+          width: "100%;",
+          search_placeholder: "Search..."
         });  
 
   });
