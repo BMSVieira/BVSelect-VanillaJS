@@ -88,9 +88,10 @@ Settings:
 | --- | --- | --- | --- |
 | `selector` | `ID`  | `---` |  Specify ID of the element|
 | `width` | `px` or `%` | `100%` |  Specify the width of the main element|
-| `searchbox` | `true` or `false` | `false` |  Add a search box to the list |
-| `offset` | `true` or `false` | `true` | Fixes Viewport Offset |
-| `search_placeholder` | `string` | `Search...` | Modify the input (when enabled) placelholder |
+| `searchbox` | `boolean` | `false` |  Add a search box to the list |
+| `offset` | `boolean` | `true` | Fixes Viewport Offset |
+| `placeholder` | `string` | `Select Option` | Modify dropdown's placeholder |
+| `search_placeholder` | `string` | `Search...` | Modify input's placelholder |
 
 <b>Example:</b>
 ```javascript
@@ -106,7 +107,7 @@ Attributes:
 -
 | Name | Value | Description |
 | --- | --- | --- |
-| `data-separator` | `true` or `false` | Highlights an option |
+| `data-separator` | `boolean` | Highlights an option |
 | `data-img` | `Image Source` |  Adds an Image to option |
 | `data-icon` | `fa fa-hashtag` |  Adds an FontIcon to option, can be used any provider as long it is identical. Images will be prioritized over icons. |
 | `disabled (native)` | `disabled` |  Disables an option |
