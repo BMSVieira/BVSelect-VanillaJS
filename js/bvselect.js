@@ -15,7 +15,7 @@
             var randomID =  Math.floor(Math.random() * (9999 - 0 + 1)) + 0;
 
             // Hides native selector
-            // document.getElementById(this.selector).style.display = "none";
+            document.getElementById(this.selector).style.display = "none";
 
             // ** ADD OPTIONS TO LIST ** 
             this.SetupListOptions = function ()
@@ -52,7 +52,6 @@
                           if(item.classList.contains("bv_disabled") || item.classList.contains("nofocus") ) { } else {
                               if(selected_option.attributes.multiple)
                               {
-
                                         var SelectedNames = "";
                                         event.preventDefault();
                                      
@@ -88,8 +87,7 @@
                                         if(x.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
                                         // Updates main div
                                         document.getElementById("main_"+randomID).innerHTML = item.textContent + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
-                                        document.getElementById("ul_"+randomID).style.display = "none";
-                                    
+                                        document.getElementById("ul_"+randomID).style.display = "none"; 
                               }
                           }
                       })
