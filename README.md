@@ -13,6 +13,10 @@ Demo:
 -
 https://bmsvieira.github.io/BVSelect-VanillaJS/
 
+<b>JQuery Version:</b>
+
+https://github.com/BMSVieira/BVSelect
+
 Features:
 -
 - 🔧 Fully Customizable
