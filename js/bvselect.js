@@ -131,10 +131,10 @@ class BVSelect {
                                 val.style.display = "block";
                             });
                         }
-                       
+                          FixVerticalViewPort();
                     }
 
-                     FixVerticalViewPort();
+                  
                 })
             });
         }
