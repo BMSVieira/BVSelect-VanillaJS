@@ -1,10 +1,11 @@
 
 class BVSelect{
 
-      constructor({selector = 'defaultId', width = "100%", searchbox = false, offset = true}){
+      constructor({selector = 'defaultId', width = "100%", searchbox = false, offset = true, search_placeholder = "Search..."}){
 
         // Random Number generated
         var randomID =  Math.floor(Math.random() * (9999 - 0 + 1)) + 0;
+        var SearchPlaceholder = search_placeholder;
         var selectedIDFocus = 0; // Save wich dropdown is currently open
         var selectedMultiple = []; 
 
@@ -14,6 +15,7 @@ class BVSelect{
         this.width = width;
         this.offset = offset;
         this.randomID = randomID;
+        this.search_placeholder;
 
         // Hides native selector
         document.getElementById(this.selector).style.display = "none";
@@ -116,7 +118,7 @@ class BVSelect{
 
             if (this.searchbox == true) 
             {
-                document.querySelector("#ul_" + randomID).insertAdjacentHTML('afterbegin', '<li class="nofocus"><div class="innerinput"><input placeholder="Search..." class="bv_input" id="input_' + randomID + '" type="text"></div</li>');
+                document.querySelector("#ul_" + randomID).insertAdjacentHTML('afterbegin', '<li class="nofocus"><div class="innerinput"><input placeholder="'+SearchPlaceholder+'" class="bv_input" id="input_' + randomID + '" type="text"></div</li>');
             }
 
             // Get Selected Option
@@ -321,7 +323,7 @@ class BVSelect{
         this.SetupListOptions();
     }
 
-    // UPDATE
+    // GET ID
     GetID(){
           // Return ID Generated when building Dropdown, so you can add custom classes
           return this.randomID;
