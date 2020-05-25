@@ -183,6 +183,10 @@ class BVSelect {
             // Add event Listener on click main div
             document.getElementById("main_" + randomID).addEventListener("click", function() {
 
+                // Reset dropdown position, in case it was changed before
+                document.getElementById("ul_" + randomID).style.position = "absolute";
+                document.getElementById("ul_" + randomID).style.bottom = "";
+
                 // Correct the width of the UL when window is resized
                 var select_width = document.getElementById("main_" + randomID).offsetWidth;
                 element_ul.style.width = select_width + "px";
@@ -212,6 +216,7 @@ class BVSelect {
                     document.querySelector("#arrow_" + randomID).classList.add("up");
                 }
 
+                // Call function at end of the dropdown movement
                 if (offset == true) {
                     FixVerticalViewPort();
                 }
