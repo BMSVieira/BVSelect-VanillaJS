@@ -141,6 +141,10 @@ class BVSelect{
             // Add event Listener on click main div
             document.getElementById("main_"+randomID).addEventListener("click", function(){
 
+            // Correct the width of the UL when window is resized
+            var select_width = document.getElementById("main_"+randomID).offsetWidth;
+            element_ul.style.width = select_width+ "px";
+
                if(document.getElementById('ul_'+randomID).style.display == 'block') {
 
                     document.getElementById('ul_'+randomID).style.display = 'none';
@@ -302,7 +306,6 @@ class BVSelect{
 
     // DESTROY
     Destroy(){
-
         // Destroy main element and shows up native selectbox
         document.getElementById("bv_"+this.randomID).remove();
         document.getElementById(this.selector).style.display = "block";
@@ -310,7 +313,6 @@ class BVSelect{
 
     // UPDATE
     Update(){
-
         // Removes all Li that does not contain class "nofocus" - Its the search. 
         Array.from(document.querySelectorAll("#ul_" + this.randomID+" li"))
             .forEach(function(val) {
@@ -321,7 +323,6 @@ class BVSelect{
 
     // UPDATE
     GetID(){
-
           // Return ID Generated when building Dropdown, so you can add custom classes
           return this.randomID;
     }
