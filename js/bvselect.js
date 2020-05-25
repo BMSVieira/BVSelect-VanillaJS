@@ -15,9 +15,9 @@
             var randomID =  Math.floor(Math.random() * (9999 - 0 + 1)) + 0;
 
             // Hides native selector
-            document.getElementById(this.selector).style.display = "none";
+            // document.getElementById(this.selector).style.display = "none";
 
-            // ** ADD OPTIONS TO LIST **
+            // ** ADD OPTIONS TO LIST ** 
             this.SetupListOptions = function ()
             {
                 // Get All options inside Selectbox
@@ -43,22 +43,57 @@
                   }
 
                   document.querySelectorAll('#ul_'+randomID+' li').forEach((item) => {
-                      item.addEventListener('click', (e) => {
-                          const index = Array.from(item.parentNode.children).indexOf((item))
+                    
+                              item.addEventListener('click', (e) => {
+                              const index = Array.from(item.parentNode.children).indexOf((item))
+                              var selected_option = document.getElementById(this.selector);
 
-                           // TODO: Verificar se é DISABLED
 
-                            if(item.classList.contains("bv_disabled") || item.classList.contains("nofocus") ) { } else {
-                              // Get Index of option
-                              document.getElementById(this.selector).getElementsByTagName('option')[index-1].selected = 'selected';
-                              // Trigger onchange function
-                              if(x.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
-                              // Updates main div
-                              document.getElementById("main_"+randomID).innerHTML = item.textContent + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
-                              document.getElementById("ul_"+randomID).style.display = "none";
-                            }
+                          if(item.classList.contains("bv_disabled") || item.classList.contains("nofocus") ) { } else {
+                              if(selected_option.attributes.multiple)
+                              {
+
+                                        var SelectedNames = "";
+                                        event.preventDefault();
+                                     
+                                        if (selectedMultiple.indexOf(index) > -1) {
+                                            var index_test = selectedMultiple.indexOf(index);
+                                            selectedMultiple.splice(index_test, 1);
+                                            document.getElementById(this.selector)[index-1].selected = false;
+                                        } else {
+                                            selectedMultiple.push(index);
+                                        } // Adds to array 
+
+                                        // Check if array is empty, if it is, gets the first option
+                                        if (selectedMultiple.length == 0) {
+                                            SelectedNames = selected_option[0].innerHTML;
+                                        } else {
+
+                                            for (var i = 0; i < selectedMultiple.length; i++) {
+                                                
+                                                var indexValFromArray = selectedMultiple[i];
+                                                document.getElementById(this.selector).getElementsByTagName('option')[indexValFromArray-1].selected = 'selected';
+                                                SelectedNames += ", " + selected_option[indexValFromArray-1].innerHTML;
+                                                
+                                            }
+                                            SelectedNames = SelectedNames.substring(2);
+                                        }
+                                        // Adds the texto o the main DIV
+                                        document.getElementById("main_"+randomID).innerHTML = SelectedNames + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
+                                
+                              } else {
+                                        // Get Index of option
+                                        document.getElementById(this.selector).getElementsByTagName('option')[index-1].selected = 'selected';
+                                        // Trigger onchange function
+                                        if(x.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
+                                        // Updates main div
+                                        document.getElementById("main_"+randomID).innerHTML = item.textContent + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>"; 
+                                        document.getElementById("ul_"+randomID).style.display = "none";
+                                    
+                              }
+                          }
                       })
-                  })
+                  });
             }
 
             // ** CREATE MAIN **
