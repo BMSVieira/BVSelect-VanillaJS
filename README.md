@@ -1,7 +1,7 @@
 BVSelect - Vanilla JS
 --
 <p align="center">
-<img width="500" src="https://bmsvieira.github.io/BVSelect/demo-template/images/BV.png">
+<img width="500" src="https://bmsvieira.github.io/BVSelect-VanillaJS/demo-template/images/BV.png">
 </p>
 <br>
 
@@ -11,7 +11,7 @@ Even though this replaces native select options, you can still use <b>Form Submi
 
 Demo:
 -
- https://bmsvieira.github.io/BVSelect/
+https://bmsvieira.github.io/BVSelect-VanillaJS/
 
 Features:
 -
