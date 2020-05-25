@@ -85,9 +85,11 @@ Settings:
 -
 | Name | Value | Default | Description |
 | --- | --- | --- | --- |
+| `selector` | `ID`  | `---` |  Specify ID of the element|
 | `width` | `px` or `%` | `100%` |  Specify the width of the main element|
 | `searchbox` | `true` or `false` | `false` |  Add a search box to the list |
 | `offset` | `true` or `false` | `true` | Fixes Viewport Offset |
+| `search_placeholder` | `string` | `Search...` | Modify the input (when enabled) placelholder |
 
 <b>Example:</b>
 ```javascript
