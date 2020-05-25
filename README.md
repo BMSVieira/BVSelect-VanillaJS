@@ -54,7 +54,8 @@ Installation:
         var demo1 = new BVSelect({
           selector: "#selectbox",
           searchbox: true,
-          offset: true
+          offset: true,
+          search_placeholder: "Search..."
         });
   });
 ```
