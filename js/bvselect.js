@@ -156,7 +156,7 @@ class BVSelect{
                         .forEach(function(val) {
                             val.style.display = 'none';
                     });
-                    document.getElementById('ul_'+randomID).style.display = 'block';
+                    BVfadeIn(document.getElementById('ul_'+randomID));
                     Array.from(document.querySelectorAll(".arrows_bv"))
                         .forEach(function(val) {
                             val.classList.remove("up");
@@ -198,6 +198,30 @@ class BVSelect{
               } 
            }
         }, false); 
+
+        // ** FADE OUT FUNCTION **
+        function BVfadeOut(el){
+          el.style.opacity = 1;
+          (function fade() {
+            if ((el.style.opacity -= .1) < 0) {
+              el.style.display = "none";
+            } else {
+              requestAnimationFrame(fade);
+            }
+          })();
+        };
+        // ** FADE IN FUNCTION **
+        function BVfadeIn(el, display){
+          el.style.opacity = 0;
+          el.style.display = display || "block";
+          (function fade() {
+            var val = parseFloat(el.style.opacity);
+            if (!((val += .1) > 1)) {
+              el.style.opacity = val;
+              requestAnimationFrame(fade);
+            }
+          })();
+        };
 
         // ** CHECK VIEW PORT OFFSET **
         function FixVerticalViewPort()
