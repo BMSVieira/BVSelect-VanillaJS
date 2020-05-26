@@ -391,4 +391,19 @@ class BVSelect {
         // Return ID Generated when building Dropdown, so you can add custom classes
         return this.randomID;
     }
+    // CHANGE
+    Change(properties) {
+
+        // Change Placeholder
+        if(properties.placeholder)
+        {
+            document.getElementById("main_" + this.randomID).innerHTML = properties.placeholder + "<i id='arrow_" + this.randomID + "' class='arrows_bv arrow down'></i>";
+        } 
+        // Change Searchbox Placeholder
+        if(properties.search_placeholder)
+        {
+            document.getElementById("input_" + this.randomID).placeholder = properties.search_placeholder;
+        } 
+
+    }
 }
