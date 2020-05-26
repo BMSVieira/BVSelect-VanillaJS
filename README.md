@@ -127,17 +127,11 @@ Attributes:
 ```
 *All CSS styles are fully customizable in order to match your style*
 
-Frequently Asked Questions
+Appearance
 -
+This was built to fit any style and to be 100% fully customizable, so you are able to change everything in the css file.
 
-<b>Is there any themes?</b>
+<p align="center">
+  <img width="800" src="https://i.imgur.com/oj0VAJm.png">
+</p>
 
-It doesn't need themes since the CSS is fully customizable, you are able to change everything to match your style.
-
-<b>In addition to design, what changes?</b>
-
-Replaces the original SelectBox but you can use it as you would with a native one, OnChange Events, Attributes, Form Submit, Append/Remove Options, everything.
-
-<b>What about Browser Compatibility?</b>
-
-It was tested successfully in every modern browser (IE11 not Included)
