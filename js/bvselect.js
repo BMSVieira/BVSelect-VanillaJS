@@ -7,7 +7,8 @@ class BVSelect {
         offset = true,
         search_placeholder = "Search...",
         placeholder = "Select Option"
-    }) {
+    }) 
+    {
 
         // Random Number generated
         var randomID = Math.floor(Math.random() * (9999 - 0 + 1)) + 0;
@@ -96,7 +97,7 @@ class BVSelect {
 
                             // Check if array is empty, if it is, gets the first option
                             if (selectedMultiple.length == 0) {
-                                SelectedNames = selected_option[0].innerHTML;
+                                SelectedNames = MainPlaceholder;
                             } else {
 
                                 for (var i = 0; i < selectedMultiple.length; i++) {
@@ -368,7 +369,6 @@ class BVSelect {
     }
 
     // ** METHODS ** 
-
     // DESTROY
     Destroy() {
         // Destroy main element and shows up native selectbox
