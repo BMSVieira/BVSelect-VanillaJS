@@ -50,16 +50,15 @@ Installation:
 ```
 3 - Initilize.
 ```javascript
-  document.addEventListener("DOMContentLoaded", function() {
-        var demo1 = new BVSelect({
-          selector: "#selectbox",
-          searchbox: true,
-          offset: true,
-          search_placeholder: "Search..."
-        });
-  });
+document.addEventListener("DOMContentLoaded", function() {
+      var demo1 = new BVSelect({
+        selector: "#selectbox",
+        searchbox: true,
+        offset: true,
+        search_placeholder: "Search..."
+      });
+});
 ```
-
 
 Methods:
 -
@@ -83,11 +82,17 @@ demo1.GetID();
 Returns the ID that was generated to build dropdown, so you can add custom classes.
 
 <b>Change:</b>
+
+| Name | Value | Description |
+| --- | --- | --- |
+| `placeholder` | `string` | Modify dropdown's placeholder |
+| `search_placeholder` | `string` | Modify input's placelholder |
+
 ```javascript
- demo1.Change({
-    placeholder: "New Placeholder",
-    search_placeholder: "New Searchbox's Placeholder"
-  });
+demo1.Change({
+  placeholder: "New Placeholder",
+  search_placeholder: "New Searchbox's Placeholder"
+});
 ```
 Changes Dropdown's Settings
 
@@ -104,13 +109,13 @@ Settings:
 
 <b>Example:</b>
 ```javascript
-  document.addEventListener("DOMContentLoaded", function() {
-        var demo1 = new BVSelect({
-          selector: "#selectbox",
-          searchbox: true,
-          offset: true
-        });
-  });
+document.addEventListener("DOMContentLoaded", function() {
+      var demo1 = new BVSelect({
+        selector: "#selectbox",
+        searchbox: true,
+        offset: true
+      });
+});
 ```
 Attributes:
 -
