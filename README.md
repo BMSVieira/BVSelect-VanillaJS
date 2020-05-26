@@ -82,6 +82,15 @@ demo1.GetID();
 ```
 Returns the ID that was generated to build dropdown, so you can add custom classes.
 
+<b>Change:</b>
+```javascript
+ demo1.Change({
+    placeholder: "New Placeholder",
+    search_placeholder: "New Searchbox's Placeholder"
+  });
+```
+Changes Dropdown's Settings
+
 Settings:
 -
 | Name | Value | Default | Description |
