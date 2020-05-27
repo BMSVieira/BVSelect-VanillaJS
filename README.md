@@ -123,7 +123,7 @@ demo1.Change({
     }
 });
 
-// Update Dropdown base on the changes to the original selectbox
+// Update Dropdown based on changes to the original selectbox
 demo1.Update();
 ```
 Changes Dropdown's Settings
