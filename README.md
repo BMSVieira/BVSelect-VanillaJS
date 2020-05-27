@@ -53,8 +53,10 @@ Installation:
 document.addEventListener("DOMContentLoaded", function() {
       var demo1 = new BVSelect({
         selector: "#selectbox",
+        width: "100%",
         searchbox: true,
         offset: true,
+        placeholder: "Select Option",
         search_placeholder: "Search..."
       });
 });
@@ -87,12 +89,42 @@ Returns the ID that was generated to build dropdown, so you can add custom class
 | --- | --- | --- |
 | `placeholder` | `string` | Modify dropdown's placeholder |
 | `search_placeholder` | `string` | Modify input's placelholder |
+| `options` | `object` | Replaces all options in the original selectbox |
 
 ```javascript
 demo1.Change({
   placeholder: "New Placeholder",
-  search_placeholder: "New Searchbox's Placeholder"
+  search_placeholder: "New Searchbox's Placeholder",
+  options : {
+          0: {
+              inner_text: 'Metallica',
+              value: "met",
+              disabled: false,
+              separator: false,
+              img: "https://img.icons8.com/color/2x/usa.png",
+              icon: "fa fa-hashtag"
+          },
+          1: {
+              inner_text: 'Megadeth',
+              value: "meg",
+              disabled: false,
+              separator: false,
+              img: false,
+              icon: "fa fa-tshirt"
+          },
+          2: {
+              inner_text: 'Slayer',
+              value: "sla",
+              disabled: false,
+              separator: false,
+              img: false,
+              icon: "fa fa-hashtag"
+          }  
+    }
 });
+
+// Update Dropdown base on the changes to the original selectbox
+demo1.Update();
 ```
 Changes Dropdown's Settings
 
