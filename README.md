@@ -61,6 +61,16 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 });
 ```
+Polyfill:
+-
+BVSelect uses ES6 which isn't supported in all browsers yet (especially older browsers). Some features will need to be polyfilled to be available. Use the following sources instead:
+```javascript
+// Polyfill Source
+<script src="https://polyfill.io/v3/polyfill.min.js?features=document.querySelector%2Cdocument%2CArray.prototype.forEach%2CNodeList.prototype.forEach%2CElement.prototype.closest%2CArray.from%2Ces5"></script>
+
+// BVSelect Polyfilled Version
+<script src="js/bvselect.polyfill.js"></script>
+```
 
 Methods:
 -
