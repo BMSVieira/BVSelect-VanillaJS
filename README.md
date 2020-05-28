@@ -21,7 +21,7 @@ Features:
 -
 - 🔧 Fully Customizable
 - 💪 No Dependencies, built with VanillaJS
-- 🌎 Tested in All Modern Browsers (IE11 not Included)
+- 🌎 Tested in All Modern Browsers
 - 😎 Images & FontIcons
 - ⌨️ Normal Usage (Multiple Selection included)
 - 🔎 Built-in Searchbox
