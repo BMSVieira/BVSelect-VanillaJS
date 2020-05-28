@@ -421,7 +421,7 @@ class BVSelect {
             }
 
         } else {
-            console.log("Options must be and Object. Read documentation."); 
+            console.error("Options must be and Object. Read documentation."); 
         }
     }
 }
