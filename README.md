@@ -23,7 +23,7 @@ Features:
 - 💪 No Dependencies, built with VanillaJS
 - 🌎 Tested in All Modern Browsers
 - 😎 Images & FontIcons
-- ⌨️ Normal Usage (Multiple Selection included)
+- ⌨️ Mobile Optimization & Normal Usage
 - 🔎 Built-in Searchbox
 - 🖥 Prevented Viewport Overflow
 
