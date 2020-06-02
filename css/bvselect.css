@@ -52,6 +52,41 @@ Developed by: Bruno Vieira
 	-webkit-transform: rotate(45deg);
 	margin-top: 2px
 }
+
+.bv_ul_mobile {
+	width: 80% !important;
+	position: fixed !important;
+	top: 5% !important;
+	left: 10% !important;
+	border: 0px !important;
+	height: 90% !important;
+	margin: 0px !important;
+	overflow-y: scroll;
+	z-index: 10 !important;
+}
+
+.bv_ul_bg
+{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0, 0, 0, 0.8); z-index: 9;
+}
+
+.bv_ul_mobile li
+{
+	padding:20px!important;
+}
+
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+
 .bv_ul_inner {
 	position: absolute;
 	margin-top: 10px;

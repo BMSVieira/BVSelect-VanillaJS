@@ -18,6 +18,7 @@ class BVSelect {
         var selectedMultiple = [];
         var selected_option_text = "";
         var first_option_text = "";
+        var ThisSelector = selector.substring(1);
 
         // Define Variables
         this.selector = selector.substring(1);
@@ -91,8 +92,10 @@ class BVSelect {
                                 var index_test = selectedMultiple.indexOf(index);
                                 selectedMultiple.splice(index_test, 1);
                                 document.getElementById(this.selector)[index + numberless].selected = false;
+                                item.style.backgroundColor = "transparent";
                             } else {
                                 selectedMultiple.push(index);
+                                item.style.backgroundColor = "#ececec";
                             } // Adds to array 
 
                             // Check if array is empty, if it is, gets the first option
@@ -123,6 +126,13 @@ class BVSelect {
                             // Updates main div
                             document.getElementById("main_" + randomID).innerHTML = item.textContent + "<i id='arrow_" + randomID + "' class='arrows_bv arrow down'></i>";
                             document.getElementById("ul_" + randomID).style.display = "none";
+
+                            // Remove class so Body has Scroll Again
+                            document.body.classList.remove("stop-scrolling");
+                            if(document.body.contains(document.getElementById('deletebg'))){
+                                   document.getElementById("deletebg").remove();
+                            }
+
                         }
 
                         // When click, resets search filter
@@ -133,6 +143,8 @@ class BVSelect {
                             });
                         }
                           FixVerticalViewPort();
+
+
                     }
 
                   
@@ -187,6 +199,17 @@ class BVSelect {
                 // Reset dropdown position, in case it was changed before
                 document.getElementById("ul_" + randomID).style.position = "absolute";
                 document.getElementById("ul_" + randomID).style.bottom = "";
+
+                // Check Windows Width for Mobile
+                if(window.innerWidth < 600)
+                {
+                      document.getElementById("ul_" + randomID).classList.add("bv_ul_mobile");
+                      document.getElementById(ThisSelector).insertAdjacentHTML('afterend', '<div id="deletebg" class="bv_ul_bg"></div>');
+                      document.body.classList.add("stop-scrolling");
+                      
+                } else {
+                     document.getElementById("ul_" + randomID).classList.remove("bv_ul_mobile");
+                }
 
                 // Correct the width of the UL when window is resized
                 var select_width = document.getElementById("main_" + randomID).offsetWidth;
@@ -355,6 +378,12 @@ class BVSelect {
                         Array.from(document.querySelectorAll("#ul_" + randomID + " li")).forEach(function(val) {
                             val.style.display = "block";
                         });
+
+                        // Remove class so Body has Scroll Again
+                        document.body.classList.remove("stop-scrolling");
+                        if(document.body.contains(document.getElementById('deletebg'))){
+                               document.getElementById("deletebg").remove();
+                        }
 
                         if (document.getElementById("ul_" + randomID)) // Checks if element existed in case it was destroyed
                         {
