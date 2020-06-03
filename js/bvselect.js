@@ -6,7 +6,8 @@ class BVSelect {
         searchbox = false,
         offset = true,
         search_placeholder = "Search...",
-        placeholder = "Select Option"
+        placeholder = "Select Option",
+        breakpoint = "600"
     }) 
     {
 
@@ -18,7 +19,7 @@ class BVSelect {
         var selectedMultiple = [];
         var selected_option_text = "";
         var first_option_text = "";
-        var ThisSelector = selector.substring(1);
+        var MDivSelector = selector.substring(1);
 
         // Define Variables
         this.selector = selector.substring(1);
@@ -27,6 +28,7 @@ class BVSelect {
         this.offset = offset;
         this.randomID = randomID;
         this.search_placeholder;
+        this.breakpoint = breakpoint;
 
         // Hides native selector
         document.getElementById(this.selector).style.display = "none";
@@ -201,10 +203,10 @@ class BVSelect {
                 document.getElementById("ul_" + randomID).style.bottom = "";
 
                 // Check Windows Width for Mobile
-                if(window.innerWidth < 600)
+                if(window.innerWidth < breakpoint)
                 {
                       document.getElementById("ul_" + randomID).classList.add("bv_ul_mobile");
-                      document.getElementById(ThisSelector).insertAdjacentHTML('afterend', '<div id="deletebg" class="bv_ul_bg"></div>');
+                      document.getElementById(MDivSelector).insertAdjacentHTML('afterend', '<div id="deletebg" class="bv_ul_bg"></div>');
                       document.body.classList.add("stop-scrolling");
                       
                 } else {
