@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", function() {
         searchbox: true,
         offset: true,
         placeholder: "Select Option",
-        search_placeholder: "Search..."
+        search_placeholder: "Search...",
+        breakpoint: 450
       });
 });
 ```
@@ -148,6 +149,7 @@ Settings:
 | `offset` | `boolean` | `true` | Fixes Viewport Offset |
 | `placeholder` | `string` | `Select Option` | Modify dropdown's placeholder |
 | `search_placeholder` | `string` | `Search...` | Modify input's placelholder |
+| `breakpoint` | `integer` | `600` | Defines the responsive breakpoint (in px) |
 
 <b>Example:</b>
 ```javascript
