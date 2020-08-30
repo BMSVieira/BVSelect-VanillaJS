@@ -135,6 +135,7 @@ class BVSelect {
                                    document.getElementById("deletebg").remove();
                             }
 
+                              FixVerticalViewPort();
                         }
 
                         // When click, resets search filter
@@ -144,12 +145,7 @@ class BVSelect {
                                 val.style.display = "block";
                             });
                         }
-                          FixVerticalViewPort();
-
-
                     }
-
-                  
                 })
             });
         }
