@@ -86,7 +86,6 @@ Developed by: Bruno Vieira
   overflow: hidden;
 }
 
-
 .bv_ul_inner {
 	position: absolute;
 	margin-top: 10px;
@@ -95,8 +94,11 @@ Developed by: Bruno Vieira
 	border: 2px solid #e1e1e1;
 	border-radius: 8px;
 	display: none;
-	z-index: 1
+	z-index: 1;
+	max-height: 400px;
+	overflow-x: auto;
 }
+
 .bv_ul_inner li {
     cursor: pointer;
     list-style: none;
