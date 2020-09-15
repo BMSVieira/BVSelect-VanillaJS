@@ -77,24 +77,43 @@ Methods:
 -
 
 <b>Destroy:</b>
+Removes dropdown, unbinds all its events and brings back the original Select.
+
 ```javascript
 demo1.Destroy();
 ```
-Removes dropdown, unbinds all its events and brings back the original Select
 
 <b>Update:</b>
+Updates current dropdown based on changes to the original selectbox.
+
 ```javascript
 demo1.Update();
 ```
-Updates current dropdown based on changes to the original selectbox.
 
 <b>Get ID:</b>
+Returns the ID that was generated to build dropdown, so you can add custom classes.
+
 ```javascript
 demo1.GetID();
 ```
-Returns the ID that was generated to build dropdown, so you can add custom classes.
+
+<b>Set Option:</b>
+Set new selected option.
+
+| Name | Value | Description |
+| --- | --- | --- |
+| `type` | `byIndex` or `byValue` | Parameter |
+| `value` | `string` | Value to search |
+
+```javascript
+demo1.SetOption({
+  type: "byIndex",
+  value: "1"
+});
+```
 
 <b>Change:</b>
+Changes dropdown's settings
 
 | Name | Value | Description |
 | --- | --- | --- |
@@ -137,7 +156,6 @@ demo1.Change({
 // Update Dropdown based on changes to the original selectbox
 demo1.Update();
 ```
-Changes Dropdown's Settings
 
 Settings:
 -
@@ -151,7 +169,6 @@ Settings:
 | `search_placeholder` | `string` | `Search...` | Modify input's placelholder |
 | `breakpoint` | `integer` | `600` | Defines the responsive breakpoint (in px) |
 
-<b>Example:</b>
 ```javascript
 document.addEventListener("DOMContentLoaded", function() {
       var demo1 = new BVSelect({
@@ -172,7 +189,6 @@ Attributes:
 
 *To add FontIcons, you must include it's own sources*
 
-<b>Example:</b>
 ```html
 <select id="selectbox">
     <option value="##" data-separator="true" selected>Select Option</option>
