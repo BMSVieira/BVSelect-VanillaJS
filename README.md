@@ -169,7 +169,6 @@ Settings:
 | `search_placeholder` | `string` | `Search...` | Modify input's placelholder |
 | `breakpoint` | `integer` | `600` | Defines the responsive breakpoint (in px) |
 
-<b>Example:</b>
 ```javascript
 document.addEventListener("DOMContentLoaded", function() {
       var demo1 = new BVSelect({
@@ -190,7 +189,6 @@ Attributes:
 
 *To add FontIcons, you must include it's own sources*
 
-<b>Example:</b>
 ```html
 <select id="selectbox">
     <option value="##" data-separator="true" selected>Select Option</option>
