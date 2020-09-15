@@ -460,4 +460,36 @@ class BVSelect {
             console.error("Options must be and Object. Read documentation."); 
         }
     }
+    // Set option
+    SetOption(properties) {
+
+        var selectorIndex = document.getElementById(this.selector);
+
+        // If is set by index
+        if(properties.type == "byIndex")
+        {
+            selectorIndex.selectedIndex = properties.value; 
+
+            // Trigger onchange function
+            if (selectorIndex.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
+            document.getElementById("main_" + this.randomID).innerHTML = selectorIndex.options[selectorIndex.selectedIndex].text + "<i id='arrow_" + this.randomID + "' class='arrows_bv arrow down'></i>";
+
+        // if is set by value
+        } else if(properties.type == "byValue")
+        {
+            for (var i = 0; i < selectorIndex.length; i++) {
+
+                 if(selectorIndex[i].value == properties.value)
+                 {
+                    selectorIndex.selectedIndex = selectorIndex[i].index; 
+
+                    // Trigger onchange function
+                    if (selectorIndex.getAttribute("onchange") != null) { document.getElementById(this.selector).onchange(); }
+                    document.getElementById("main_" + this.randomID).innerHTML = selectorIndex[i].innerText + "<i id='arrow_" + this.randomID + "' class='arrows_bv arrow down'></i>";
+                 }
+            }
+
+        }
+    }
+
 }
