@@ -90,6 +90,13 @@ Updates current dropdown based on changes to the original selectbox.
 demo1.Update();
 ```
 
+<b>Get ID:</b>
+Returns the ID that was generated to build dropdown, so you can add custom classes.
+
+```javascript
+demo1.GetID();
+```
+
 <b>Set Option:</b>
 Set new selected option.
 
@@ -103,13 +110,6 @@ demo1.Set({
   type: "byIndex",
   value: "1"
 });
-```
-
-<b>Get ID:</b>
-Returns the ID that was generated to build dropdown, so you can add custom classes.
-
-```javascript
-demo1.GetID();
 ```
 
 <b>Change:</b>
