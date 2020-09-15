@@ -106,7 +106,7 @@ Set new selected option.
 | `value` | `string` | Value to search |
 
 ```javascript
-demo1.Set({
+demo1.SetOption({
   type: "byIndex",
   value: "1"
 });
