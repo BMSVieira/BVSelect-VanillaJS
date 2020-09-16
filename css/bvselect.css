@@ -63,6 +63,7 @@ Developed by: Bruno Vieira
 	margin: 0px !important;
 	overflow-y: scroll;
 	z-index: 10 !important;
+	max-height:100%!important;
 }
 
 .bv_ul_bg
