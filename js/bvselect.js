@@ -488,8 +488,35 @@ class BVSelect {
                     document.getElementById("main_" + this.randomID).innerHTML = selectorIndex[i].innerText + "<i id='arrow_" + this.randomID + "' class='arrows_bv arrow down'></i>";
                  }
             }
-
         }
     }
+    // Append/Prepend Option
+    AppendOption(properties) {
+        
+        console.log(properties);
 
+        // Get position e check if position is undefined.
+        var position = properties.position;
+        if(position == undefined) { var position = "beforeend"; }
+
+        if(properties.options && typeof(properties.options) === 'object')
+        {
+            // Loop object and add new options to original select box
+            var prop = Object.keys(properties.options).length;
+            for (var i = 0; i < prop; i++) {
+
+                var change_disabled, change_separator, change_img, change_icon;
+
+                if(properties.options[i].disabled == true){ change_disabled = "disabled"; } else { change_disabled = ""; }
+                if(properties.options[i].separator == true){ change_separator = "data-separator='true'"; } else { change_separator = ""; }
+                if(properties.options[i].img){ change_img = "data-img='"+properties.options[i].img+"'"; } else { change_img = ""; }
+                if(properties.options[i].icon){ change_icon = "data-icon='"+properties.options[i].icon+"'"; } else { change_icon = ""; }
+
+                document.getElementById(this.selector).insertAdjacentHTML(position, "<option "+change_img+" "+change_icon+" "+change_separator+" "+change_disabled+" value="+properties.options[i].value+" >"+properties.options[i].inner_text+"</option>");
+            }
+
+        } else {
+            console.error("Options must be and Object. Read documentation.");
+        }
+    } 
 }
