@@ -157,6 +157,41 @@ demo1.Change({
 demo1.Update();
 ```
 
+<b>Append Option:</b>
+Add new options to existing selectbox
+
+| Name | Value | Description |
+| --- | --- | --- |
+| `position` | `afterbegin` or `beforeend` | Add new options at beginning or ending of the dropdown |
+| `options` | `object` | Options to add to original selectbox |
+
+```javascript
+demo1.AppendOption({
+    position: "beforeend",
+    options : {
+            0: {
+                inner_text: 'Metallica',
+                value: "met",
+                disabled: false,
+                separator: false,
+                img: "https://img.icons8.com/color/2x/usa.png",
+                icon: "fa fa-hashtag"
+            },
+            1: {
+                inner_text: 'Megadeth',
+                value: "meg",
+                disabled: false,
+                separator: false,
+                img: false,
+                icon: "fa fa-tshirt"
+            }
+      }
+  });
+
+// Update Dropdown based on changes to the original selectbox
+demo1.Update();
+```
+
 Settings:
 -
 | Name | Value | Default | Description |
