@@ -4,10 +4,9 @@ BVSelect - Vanilla JS
 <img width="500" src="https://bmsvieira.github.io/BVSelect-VanillaJS/demo-template/images/BV.png">
 </p>
 <br>
-
+<p align="center">
 Replaces native select elements with fully customizable dropdowns.
-
-Even though this replaces native select options, you can still use <b>Form Submit</b>, <b>Onchange Events</b> and <b>Attributes</b> as you would with normal usage.
+</p>
 
 Demo:
 -
