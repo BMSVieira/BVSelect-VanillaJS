@@ -13,6 +13,7 @@ class BVSelect {
         selector = 'defaultId',
         width = "100%",
         searchbox = false,
+        search_autofocus = false,
         offset = true,
         search_placeholder = "Search...",
         placeholder = "Select Option",
@@ -38,6 +39,7 @@ class BVSelect {
         this.randomID = randomID;
         this.search_placeholder;
         this.breakpoint = breakpoint;
+        this.search_autofocus = search_autofocus;
 
         // Hides native selector
         document.getElementById(this.selector).style.display = "none";
@@ -248,11 +250,12 @@ class BVSelect {
                 }
 
                 // Call function at end of the dropdown movement
-                if (offset == true) {
-                    FixVerticalViewPort();
-                }
+                if (offset == true) { FixVerticalViewPort(); }
 
-
+                // Check if autofocus and search is enabled
+                if(search_autofocus == true && searchbox == true) { document.getElementById("input_" + randomID).focus();}
+            
+               
             }, false);
 
             // ** SETUP LIST OPTIONS **
