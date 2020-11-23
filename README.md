@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         offset: true,
         placeholder: "Select Option",
         search_placeholder: "Search...",
+        search_autofocus: true,
         breakpoint: 450
       });
 });
@@ -197,6 +198,7 @@ Settings:
 | `offset` | `boolean` | `true` | Fixes Viewport Offset |
 | `placeholder` | `string` | `Select Option` | Modify dropdown's placeholder |
 | `search_placeholder` | `string` | `Search...` | Modify input's placelholder |
+| `search_autofocus` | `boolean` | `false` | Automatically focus on search input if enabled |
 | `breakpoint` | `integer` | `600` | Defines the responsive breakpoint (in px) |
 
 ```javascript
