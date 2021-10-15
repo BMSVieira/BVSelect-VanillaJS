@@ -7,7 +7,7 @@ Made by: Bruno Vieira
 
 --------------------------- */
 
-class BVSelect {
+export default class BVSelect {
 
     constructor({
         selector = 'defaultId',
